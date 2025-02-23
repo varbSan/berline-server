@@ -6,12 +6,15 @@ import { UserModule } from './user/user.module';
 import { QueuePointModule } from './queuePoint/queuePoint.module';
 import { AuthModule } from './auth/auth.module';
 
+const isDeveloppement = process.env.NODE_ENV === 'development';
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       playground: false, // Enable playground
-      autoSchemaFile: true,
+      autoSchemaFile: 'schema.gql', // Specify the path for the schema file
+      debug: isDeveloppement,
+      introspection: isDeveloppement,
     }),
     UserModule,
     AuthModule,

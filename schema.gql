@@ -2,6 +2,31 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type User {
+  id: Int!
+  name: String!
+  email: String!
+  hashedPassword: String!
+}
+
+type QueuePoint {
+  row: Int!
+  date: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type Query {
-  getHello: String!
+  hello: String!
+  getUsers: [User!]!
+  getProfile: String!
+  getLastQueuePoint: QueuePoint!
+}
+
+type Mutation {
+  createUser(name: String!, email: String!, password: String!): User!
+  createQueuePoint(row: Int!): QueuePoint!
 }
