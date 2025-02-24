@@ -2,13 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type User {
-  id: Int!
-  name: String!
-  email: String!
-  hashedPassword: String!
-}
-
 type QueuePoint {
   row: Int!
   date: DateTime!
@@ -21,12 +14,10 @@ scalar DateTime
 
 type Query {
   hello: String!
-  getUsers: [User!]!
-  getProfile: String!
   getLastQueuePoint: QueuePoint!
+  getProfile: String!
 }
 
 type Mutation {
-  createUser(name: String!, email: String!, password: String!): User!
   createQueuePoint(row: Int!): QueuePoint!
 }
