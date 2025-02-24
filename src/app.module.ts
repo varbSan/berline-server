@@ -1,12 +1,10 @@
+import 'dotenv/config';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { UserModule } from './user/user.module';
 import { QueuePointModule } from './queuePoint/queuePoint.module';
 import { AuthModule } from './auth/auth.module';
-import * as dotenv from 'dotenv';
-
-dotenv.config();
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
