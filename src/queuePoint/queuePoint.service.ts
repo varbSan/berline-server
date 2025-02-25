@@ -6,6 +6,7 @@ import { QueuePoint } from './queuePoint.model';
 export class QueuePointService {
   private queuePointsDb: QueuePoint[] = [
     {
+      id: 1,
       row: 10,
       date: new Date(),
     },
@@ -18,7 +19,7 @@ export class QueuePointService {
   }
 
   create(row: number): QueuePoint {
-    this.queuePointsDb.push({ row, date: new Date() });
+    this.queuePointsDb.push({ id: 1, row, date: new Date() });
     return this.getLast();
   }
 }
