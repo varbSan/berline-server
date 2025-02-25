@@ -22,8 +22,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     }),
     GraphQLModule.forRootAsync<ApolloDriverConfig>({
       imports: [ConfigModule],
+      driver: ApolloDriver,
       useFactory: (configService: ConfigService) => ({
-        driver: ApolloDriver,
         playground: false, // no need. use altair graphql client instead
         autoSchemaFile: 'schema.gql',
         debug: configService.get<string>('NODE_ENV') === 'development',

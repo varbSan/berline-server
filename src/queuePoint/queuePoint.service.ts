@@ -1,6 +1,6 @@
 // src/user/user.service.ts
 import { Injectable } from '@nestjs/common';
-import { QueuePoint } from './queuePoint.model';
+import { QueuePoint } from './queuePoint.entity';
 
 @Injectable()
 export class QueuePointService {

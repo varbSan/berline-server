@@ -1,7 +1,7 @@
 // src/user/user.resolver.ts
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { QueuePointService } from './queuePoint.service';
-import { QueuePoint } from './queuePoint.model';
+import { QueuePoint } from './queuePoint.entity';
 
 @Resolver(() => QueuePoint)
 export class QueuePointResolver {
