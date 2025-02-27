@@ -1,13 +1,13 @@
-import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { Entity, PrimaryKey, Property } from '@mikro-orm/postgresql';
 
-@ObjectType()
+@Entity()
 export class QueuePoint {
-  @Field(() => Int)
+  @PrimaryKey()
   id: number;
 
-  @Field(() => Int)
+  @Property()
   row: number;
 
-  @Field(() => Date)
+  @Property()
   date: Date;
 }
