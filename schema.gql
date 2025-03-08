@@ -2,10 +2,10 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type QueuePointDto {
+type QueuePointType {
   id: Int!
   row: Int!
-  date: DateTime!
+  createdAt: DateTime!
 }
 
 """
@@ -15,9 +15,9 @@ scalar DateTime
 
 type Query {
   hello: String!
-  getLastQueuePoint: QueuePointDto!
+  getLastQueuePoint: QueuePointType!
 }
 
 type Mutation {
-  createQueuePoint(row: Int!): QueuePointDto!
+  createQueuePoint(row: Int!): QueuePointType!
 }
