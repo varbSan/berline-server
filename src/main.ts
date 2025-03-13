@@ -4,6 +4,11 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { Logger } from '@nestjs/common';
 
+if (!global.crypto) {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-require-imports
+  global.crypto = require('crypto');
+}
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
