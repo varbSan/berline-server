@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 
 import { ValidationPipe } from '@nestjs/common';
 import { Logger } from '@nestjs/common';
+import { NextFunction } from 'express';
 
 if (!global.crypto) {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-require-imports
@@ -15,6 +16,10 @@ async function bootstrap() {
   // Enable CORS for GraphQL Playground and API calls
   app.enableCors();
 
+  app.use((req: Request, res: Response, next: NextFunction) => {
+    console.log('Request Headers:', req.headers);
+    next();
+  });
   // Global Validation (Optional)
   app.useGlobalPipes(new ValidationPipe());
 
