@@ -2,7 +2,6 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { Logger } from '@nestjs/common';
-import { NextFunction } from 'express';
 import 'dotenv/config';
 
 if (!global.crypto) {
@@ -16,10 +15,6 @@ async function bootstrap() {
   // Enable CORS for API calls
   app.enableCors({ origin: process.env.CLIENT_URL, credentials: true });
 
-  app.use((req: Request, res: Response, next: NextFunction) => {
-    console.log('Request Headers:', req.headers);
-    next();
-  });
   // Global Validation (Optional)
   app.useGlobalPipes(new ValidationPipe());
 
