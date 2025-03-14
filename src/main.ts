@@ -1,9 +1,9 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-
 import { ValidationPipe } from '@nestjs/common';
 import { Logger } from '@nestjs/common';
 import { NextFunction } from 'express';
+import 'dotenv/config';
 
 if (!global.crypto) {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-require-imports
@@ -13,8 +13,8 @@ if (!global.crypto) {
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Enable CORS for GraphQL Playground and API calls
-  app.enableCors();
+  // Enable CORS for API calls
+  app.enableCors({ origin: process.env.CLIENT_URL, credentials: true });
 
   app.use((req: Request, res: Response, next: NextFunction) => {
     console.log('Request Headers:', req.headers);
