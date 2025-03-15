@@ -20,6 +20,16 @@ import { MikroOrmModule } from '@mikro-orm/nestjs';
         autoSchemaFile: 'schema.gql',
         debug: configService.get<string>('NODE_ENV') === 'development',
         introspection: configService.get<string>('NODE_ENV') === 'development',
+        subscriptions: {
+          'graphql-ws': {
+            onConnect: () => {
+              console.log('✅ Websocket Client connected');
+            },
+            onDisconnect: () => {
+              console.log('❎ Websocket Client disconnected');
+            },
+          },
+        },
       }),
     }),
     UserModule,

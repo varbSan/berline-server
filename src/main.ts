@@ -4,6 +4,7 @@ import { ValidationPipe } from '@nestjs/common';
 import { Logger } from '@nestjs/common';
 import 'dotenv/config';
 
+// TODO: check if deployment bug is still there
 if (!global.crypto) {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-require-imports
   global.crypto = require('crypto');
@@ -22,9 +23,6 @@ async function bootstrap() {
   const port = process.env.PORT || 3000;
   await app.listen(port);
 
-  Logger.log(
-    `🚀 Server running on http://localhost:${port}/graphql`,
-    'Bootstrap',
-  );
+  Logger.log(`🚀 http server running on port: ${port}`);
 }
 void bootstrap();

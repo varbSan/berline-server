@@ -21,3 +21,7 @@ type Query {
 type Mutation {
   createQueuePoint(row: Int!): QueuePointType!
 }
+
+type Subscription {
+  queuePointCreated: QueuePointType!
+}
