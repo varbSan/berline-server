@@ -1,8 +1,8 @@
-import { defineConfig } from '@mikro-orm/postgresql';
-import { Migrator } from '@mikro-orm/migrations';
-import { PostgreSqlDriver } from '@mikro-orm/postgresql';
-import { TsMorphMetadataProvider } from '@mikro-orm/reflection';
-import 'dotenv/config';
+import * as process from 'node:process'
+import { Migrator } from '@mikro-orm/migrations'
+import { defineConfig, PostgreSqlDriver } from '@mikro-orm/postgresql'
+import { TsMorphMetadataProvider } from '@mikro-orm/reflection'
+import 'dotenv/config'
 
 export default defineConfig({
   driver: PostgreSqlDriver,
@@ -12,4 +12,4 @@ export default defineConfig({
   entitiesTs: ['./src/**/*.entity.ts'], // Ensure this path is correct for your project structure
   debug: process.env.NODE_ENV === 'development',
   metadataProvider: TsMorphMetadataProvider,
-});
+})

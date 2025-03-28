@@ -4,16 +4,16 @@ import {
   Opt,
   PrimaryKey,
   Property,
-} from '@mikro-orm/postgresql';
+} from '@mikro-orm/postgresql'
 
 @Entity()
 export class QueuePoint extends BaseEntity {
   @PrimaryKey()
-  id!: number;
+  id!: number
 
   @Property()
-  row!: number;
+  row!: number
 
   @Property()
-  createdAt: Date & Opt = new Date();
+  createdAt: Date & Opt = new Date()
 }

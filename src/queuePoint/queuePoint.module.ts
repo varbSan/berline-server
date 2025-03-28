@@ -1,8 +1,8 @@
-import { Module } from '@nestjs/common';
-import { QueuePointResolver } from './queuePoint.resolver';
-import { QueuePointService } from './queuePoint.service';
-import { MikroOrmModule } from '@mikro-orm/nestjs';
-import { QueuePoint } from './queuePoint.entity';
+import { MikroOrmModule } from '@mikro-orm/nestjs'
+import { Module } from '@nestjs/common'
+import { QueuePoint } from './queuePoint.entity'
+import { QueuePointResolver } from './queuePoint.resolver'
+import { QueuePointService } from './queuePoint.service'
 
 @Module({
   imports: [MikroOrmModule.forFeature([QueuePoint])],

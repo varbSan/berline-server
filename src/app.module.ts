@@ -1,12 +1,13 @@
-import { Module } from '@nestjs/common';
-import { GraphQLModule } from '@nestjs/graphql';
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { UserModule } from './user/user.module';
-import { QueuePointModule } from './queuePoint/queuePoint.module';
-import { AuthModule } from './auth/auth.module';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import config from './mikro-orm.config';
-import { MikroOrmModule } from '@mikro-orm/nestjs';
+import { MikroOrmModule } from '@mikro-orm/nestjs'
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
+import { Logger, Module } from '@nestjs/common'
+import { ConfigModule, ConfigService } from '@nestjs/config'
+import { GraphQLModule } from '@nestjs/graphql'
+import { AuthModule } from './auth/auth.module'
+import config from './mikro-orm.config'
+import { QueuePointModule } from './queuePoint/queuePoint.module'
+import { UserModule } from './user/user.module'
+
 @Module({
   imports: [
     MikroOrmModule.forRoot(config),
@@ -15,7 +16,7 @@ import { MikroOrmModule } from '@mikro-orm/nestjs';
       imports: [ConfigModule],
       inject: [ConfigService],
       driver: ApolloDriver,
-      useFactory: (configService: ConfigService) => ({
+      useFactory: (configService: ConfigService, logger = new Logger()) => ({
         playground: false, // no need. use altair graphql client instead
         autoSchemaFile: 'schema.gql',
         debug: configService.get<string>('NODE_ENV') === 'development',
@@ -23,10 +24,10 @@ import { MikroOrmModule } from '@mikro-orm/nestjs';
         subscriptions: {
           'graphql-ws': {
             onConnect: () => {
-              console.log('✅ Websocket Client connected');
+              logger('✅ Websocket Client connected')
             },
             onDisconnect: () => {
-              console.log('❎ Websocket Client disconnected');
+              logger('❎ Websocket Client disconnected')
             },
           },
         },

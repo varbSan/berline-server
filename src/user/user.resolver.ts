@@ -1,21 +1,21 @@
 // src/user/user.resolver.ts
 import {
-  Resolver,
   Query,
+  Resolver,
   // Mutation, Args
-} from '@nestjs/graphql';
+} from '@nestjs/graphql'
+import { User } from './user.model'
 // import { UseGuards } from '@nestjs/common';
-import { UserService } from './user.service';
-import { User } from './user.model';
+import { UserService } from './user.service'
 // import { GqlAuthGuard } from '../auth/guards/graphql-auth.guard';
 
 @Resolver(() => User)
 export class UserResolver {
-  constructor(private userService: UserService) {}
+  constructor(private readonly userService: UserService) {}
 
   @Query(() => String) // ✅ Required Query
   hello() {
-    return 'Hello, GraphQL!';
+    return 'Hello, GraphQL!'
   }
 
   // @Query(() => [User])

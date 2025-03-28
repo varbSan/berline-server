@@ -1,12 +1,12 @@
 // src/user/user.service.ts
-import { Injectable } from '@nestjs/common';
-import { User } from './user.model';
-import * as bcrypt from 'bcryptjs';
-import { createHashedPassword } from 'utils/bcrypt';
+import { Injectable } from '@nestjs/common'
+import * as bcrypt from 'bcryptjs'
+import { createHashedPassword } from 'utils/bcrypt'
+import { User } from './user.model'
 
 @Injectable()
 export class UserService {
-  private users: User[] = [
+  private readonly users: User[] = [
     {
       id: 1,
       name: 'John Doe',
@@ -19,10 +19,10 @@ export class UserService {
       email: 'foo@example.com',
       hashedPassword: '$2b$10$abcdefg1234567891', // Hashed password
     },
-  ];
+  ]
 
   getUsers(): User[] {
-    return this.users;
+    return this.users
   }
 
   async createUser(
@@ -30,28 +30,28 @@ export class UserService {
     email: string,
     password: string,
   ): Promise<User> {
-    const hashedPassword = await createHashedPassword(password);
+    const hashedPassword = await createHashedPassword(password)
     const user = {
       id: this.users.length + 1,
       name,
       email,
-      hashedPassword: hashedPassword,
-    };
+      hashedPassword,
+    }
 
-    this.users.push(user);
-    return user;
+    this.users.push(user)
+    return user
   }
 
   // make async afterward
   findOne(username: string) {
-    return this.users.find((user) => user.name === username);
+    return this.users.find(user => user.name === username)
   }
 
   async validateUser(username: string, password: string): Promise<User | null> {
-    const user = this.findOne(username);
+    const user = this.findOne(username)
     if (user && (await bcrypt.compare(password, user.hashedPassword))) {
-      return user;
+      return user
     }
-    return null;
+    return null
   }
 }

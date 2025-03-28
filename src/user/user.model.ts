@@ -1,17 +1,17 @@
 // src/user/user.model.ts
-import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { Field, Int, ObjectType } from '@nestjs/graphql'
 
 @ObjectType()
 export class User {
   @Field(() => Int) // Defines ID as an integer field
-  id: number;
+  id: number
 
   @Field() // Default type is String
-  name: string;
+  name: string
 
   @Field()
-  email: string;
+  email: string
 
   @Field()
-  hashedPassword: string;
+  hashedPassword: string
 }

@@ -1,10 +1,10 @@
-import { Module } from '@nestjs/common';
-import { AuthService } from './auth.service';
-import { AuthResolver } from './auth.resolver';
-import { UserModule } from '../user/user.module';
-import { JwtModule } from '@nestjs/jwt';
-import { PassportModule } from '@nestjs/passport';
-import { JwtStrategy } from './jwt.strategy';
+import { Module } from '@nestjs/common'
+import { JwtModule } from '@nestjs/jwt'
+import { PassportModule } from '@nestjs/passport'
+import { UserModule } from '../user/user.module'
+import { AuthResolver } from './auth.resolver'
+import { AuthService } from './auth.service'
+import { JwtStrategy } from './jwt.strategy'
 
 @Module({
   imports: [
