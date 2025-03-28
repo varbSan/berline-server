@@ -1,6 +1,6 @@
 import { MikroOrmModule } from '@mikro-orm/nestjs'
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
-import { Logger, Module } from '@nestjs/common'
+import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { GraphQLModule } from '@nestjs/graphql'
 import { AuthModule } from './auth/auth.module'
