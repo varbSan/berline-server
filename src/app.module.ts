@@ -16,7 +16,7 @@ import { UserModule } from './user/user.module'
       imports: [ConfigModule],
       inject: [ConfigService],
       driver: ApolloDriver,
-      useFactory: (configService: ConfigService, logger = new Logger()) => ({
+      useFactory: (configService: ConfigService) => ({
         playground: false, // no need. use altair graphql client instead
         autoSchemaFile: 'schema.gql',
         debug: configService.get<string>('NODE_ENV') === 'development',
@@ -24,10 +24,12 @@ import { UserModule } from './user/user.module'
         subscriptions: {
           'graphql-ws': {
             onConnect: () => {
-              logger('✅ Websocket Client connected')
+              // eslint-disable-next-line no-console
+              console.info('✅ Websocket Client connected')
             },
             onDisconnect: () => {
-              logger('❎ Websocket Client disconnected')
+              // eslint-disable-next-line no-console
+              console.info('❎ Websocket Client disconnected')
             },
           },
         },
