@@ -3,12 +3,14 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
 import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { GraphQLModule } from '@nestjs/graphql'
+import { HealthcheckController } from 'healthcheck.controller'
 import { AuthModule } from './auth/auth.module'
 import config from './mikro-orm.config'
 import { QueuePointModule } from './queuePoint/queuePoint.module'
 import { UserModule } from './user/user.module'
 
 @Module({
+  controllers: [HealthcheckController],
   imports: [
     MikroOrmModule.forRoot(config),
     ConfigModule.forRoot({ isGlobal: true }),
