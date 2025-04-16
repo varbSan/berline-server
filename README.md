@@ -1,6 +1,6 @@
-# Bergline
+# Berline
 
-**Bergline** is a nightclub queueing web application.
+**Berline** is a nightclub queueing web application.
 
 ## Project Goal
 
@@ -8,11 +8,11 @@ The primary goal of this project was to integrate and familiarize myself with my
 
 ## Features
 
-Bergline is a CRUD application where users can create queue points. The latest queue point is broadcasted via WebSocket, keeping users in sync in real-time.
+Berline is a CRUD application where users can create queue points. The latest queue point is broadcasted via WebSocket, keeping users in sync in real-time.
 
 ## Repositories
-- **Client**: [bergline-clt](https://github.com/varbSan/bergline-clt)
-- **Server**: [bergline-svr](https://github.com/varbSan/bergline-svr)
+- **Client**: [berline-client](https://github.com/varbSan/berline-client)
+- **Server**: [berline-server](https://github.com/varbSan/berline-server)
 
 ## Tech Stack
 - **Frontend**: Vue.js, TypeScript, GraphQL (Apollo Client)

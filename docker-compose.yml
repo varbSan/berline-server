@@ -4,5 +4,5 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_PASSWORD: bergline-db-password
-      POSTGRES_DB: bergline-db
+      POSTGRES_PASSWORD: berline-db-password
+      POSTGRES_DB: berline-db
